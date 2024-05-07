@@ -122,11 +122,11 @@
 		}
 		
 		/**
-		 * @param $config
+		 * @param array $config
 		 *
 		 * @return $this
 		 */
-		public function setConfig($config = array()): static {
+		public function setConfig(array $config = array()): static {
 			$apiKey      = $config['apiKey'] ?? '';
 			$accessToken = $config['accessToken'] ?? '';
 			$server      = $config['server'] ?? 'invalid-server';
