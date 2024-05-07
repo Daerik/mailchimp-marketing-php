@@ -73,7 +73,7 @@
 		 *
 		 * @param string[] $accept Array of header
 		 *
-		 * @return string Accept (e.g. application/json)
+		 * @return null|string Accept (e.g. application/json)
 		 */
 		private function selectAcceptHeader(array $accept): ?string {
 			if(count($accept) === 0 || (count($accept) === 1 && $accept[0] === '')) {
