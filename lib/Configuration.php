@@ -19,6 +19,7 @@
 	
 	namespace MailchimpMarketing;
 	
+	use InvalidArgumentException;
 	use MailchimpMarketing\Api\AccountExportApi;
 	use MailchimpMarketing\Api\AccountExportsApi;
 	use MailchimpMarketing\Api\ActivityFeedApi;
@@ -265,7 +266,7 @@
 		 */
 		public function setUserAgent($userAgent): static {
 			if(!is_string($userAgent)) {
-				throw new \InvalidArgumentException('User-agent must be a string.');
+				throw new InvalidArgumentException('User-agent must be a string.');
 			}
 			
 			$this->userAgent = $userAgent;
