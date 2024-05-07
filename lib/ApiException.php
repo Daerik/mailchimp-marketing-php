@@ -45,21 +45,21 @@
 		 *
 		 * @var mixed
 		 */
-		protected $responseBody;
+		protected mixed $responseBody;
 		
 		/**
 		 * The HTTP header of the server response.
 		 *
 		 * @var string[]|null
 		 */
-		protected $responseHeaders;
+		protected ?array $responseHeaders;
 		
 		/**
 		 * The deserialized response object
 		 *
 		 * @var $responseObject ;
 		 */
-		protected $responseObject;
+		protected mixed $responseObject;
 		
 		/**
 		 * Constructor
@@ -67,9 +67,9 @@
 		 * @param string        $message         Error message
 		 * @param int           $code            HTTP status code
 		 * @param string[]|null $responseHeaders HTTP response header
-		 * @param mixed         $responseBody    HTTP decoded body of the server response either as \stdClass or string
+		 * @param null|mixed    $responseBody    HTTP decoded body of the server response either as \stdClass or string
 		 */
-		public function __construct($message = "", $code = 0, $responseHeaders = [], $responseBody = NULL) {
+		public function __construct(string $message = "", int $code = 0, ?array $responseHeaders = [], mixed $responseBody = NULL) {
 			parent::__construct($message, $code);
 			$this->responseHeaders = $responseHeaders;
 			$this->responseBody    = $responseBody;
@@ -100,7 +100,7 @@
 		 *
 		 * @return void
 		 */
-		public function setResponseObject($obj) {
+		public function setResponseObject(mixed $obj) {
 			$this->responseObject = $obj;
 		}
 		
