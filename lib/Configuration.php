@@ -50,44 +50,45 @@
 	class Configuration {
 		private static Configuration $defaultConfiguration;
 		
-		protected array             $apiKeys        = [];
-		protected array             $apiKeyPrefixes = [];
-		protected string            $accessToken    = '';
-		protected string            $username       = '';
-		protected string            $password       = '';
-		protected string            $host           = 'https://server.api.mailchimp.com/3.0';
-		protected string            $userAgent      = 'Swagger-Codegen/3.0.80/php';
-		protected bool              $debug          = FALSE;
-		protected string            $debugFile      = 'php://output';
-		protected string            $tempFolderPath;
-		protected int               $timeout        = 120;
-		private VerifiedDomainsApi  $verifiedDomains;
-		private TemplatesApi        $templates;
-		private TemplateFoldersApi  $templateFolders;
-		private SurveysApi          $Surveys;
-		private SearchMembersApi    $searchMembers;
-		private SearchCampaignsApi  $searchCampaigns;
-		private RootApi             $root;
-		private ReportsApi          $reports;
-		private ReportingApi        $reporting;
-		private PingApi             $ping;
-		private ListsApi            $lists;
-		private LandingPagesApi     $landingPages;
-		private FileManagerApi      $fileManager;
-		private FacebookAdsApi      $facebookAds;
-		private EcommerceApi        $ecommerce;
-		private CustomerJourneysApi $customerJourneys;
-		private ConversationsApi    $conversations;
-		private ConnectedSitesApi   $connectedSites;
-		private CampaignsApi        $campaigns;
-		private CampaignFoldersApi  $campaignFolders;
+		protected array  $apiKeys        = [];
+		protected array  $apiKeyPrefixes = [];
+		protected string $accessToken    = '';
+		protected string $username       = '';
+		protected string $password       = '';
+		protected string $host           = 'https://server.api.mailchimp.com/3.0';
+		protected string $userAgent      = 'Swagger-Codegen/3.0.80/php';
+		protected bool   $debug          = FALSE;
+		protected string $debugFile      = 'php://output';
+		protected string $tempFolderPath;
+		protected int    $timeout        = 120;
+		
+		private AccountExportApi    $accountExport;
+		private AccountExportsApi   $accountExports;
+		private ActivityFeedApi     $activityFeed;
+		private AuthorizedAppsApi   $authorizedApps;
+		private AutomationsApi      $automations;
 		private BatchesApi          $batches;
 		private BatchWebhooksApi    $batchWebhooks;
-		private AutomationsApi      $automations;
-		private AuthorizedAppsApi   $authorizedApps;
-		private ActivityFeedApi     $activityFeed;
-		private AccountExportsApi   $accountExports;
-		private AccountExportApi    $accountExport;
+		private CampaignFoldersApi  $campaignFolders;
+		private CampaignsApi        $campaigns;
+		private ConnectedSitesApi   $connectedSites;
+		private ConversationsApi    $conversations;
+		private CustomerJourneysApi $customerJourneys;
+		private EcommerceApi        $ecommerce;
+		private FacebookAdsApi      $facebookAds;
+		private FileManagerApi      $fileManager;
+		private LandingPagesApi     $landingPages;
+		private ListsApi            $lists;
+		private PingApi             $ping;
+		private ReportingApi        $reporting;
+		private ReportsApi          $reports;
+		private RootApi             $root;
+		private SearchCampaignsApi  $searchCampaigns;
+		private SearchMembersApi    $searchMembers;
+		private SurveysApi          $Surveys;
+		private TemplateFoldersApi  $templateFolders;
+		private TemplatesApi        $templates;
+		private VerifiedDomainsApi  $verifiedDomains;
 		
 		public function __construct() {
 			$this->tempFolderPath   = sys_get_temp_dir();
@@ -120,6 +121,11 @@
 			$this->verifiedDomains  = new VerifiedDomainsApi($this);
 		}
 		
+		/**
+		 * @param $config
+		 *
+		 * @return $this
+		 */
 		public function setConfig($config = array()) {
 			$apiKey      = isset($config['apiKey']) ? $config['apiKey'] : '';
 			$accessToken = isset($config['accessToken']) ? $config['accessToken'] : '';
@@ -144,60 +150,119 @@
 			return $this;
 		}
 		
+		/**
+		 * @param $apiKeyIdentifier
+		 * @param $key
+		 *
+		 * @return $this
+		 */
 		public function setApiKey($apiKeyIdentifier, $key) {
 			$this->apiKeys[$apiKeyIdentifier] = $key;
 			return $this;
 		}
 		
+		/**
+		 * @param $apiKeyIdentifier
+		 *
+		 * @return null|mixed
+		 */
 		public function getApiKey($apiKeyIdentifier) {
 			return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : NULL;
 		}
 		
+		/**
+		 * @param $apiKeyIdentifier
+		 * @param $prefix
+		 *
+		 * @return $this
+		 */
 		public function setApiKeyPrefix($apiKeyIdentifier, $prefix) {
 			$this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
 			return $this;
 		}
 		
+		/**
+		 * @param $apiKeyIdentifier
+		 *
+		 * @return null|mixed
+		 */
 		public function getApiKeyPrefix($apiKeyIdentifier) {
 			return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : NULL;
 		}
 		
+		/**
+		 * @param $accessToken
+		 *
+		 * @return $this
+		 */
 		public function setAccessToken($accessToken) {
 			$this->accessToken = $accessToken;
 			return $this;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public function getAccessToken() {
 			return $this->accessToken;
 		}
 		
+		/**
+		 * @param $username
+		 *
+		 * @return $this
+		 */
 		public function setUsername($username) {
 			$this->username = $username;
 			return $this;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public function getUsername() {
 			return $this->username;
 		}
 		
+		/**
+		 * @param $password
+		 *
+		 * @return $this
+		 */
 		public function setPassword($password) {
 			$this->password = $password;
 			return $this;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public function getPassword() {
 			return $this->password;
 		}
 		
+		/**
+		 * @param $host
+		 *
+		 * @return $this
+		 */
 		public function setHost($host) {
 			$this->host = $host;
 			return $this;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public function getHost() {
 			return $this->host;
 		}
 		
+		/**
+		 * @param $userAgent
+		 *
+		 * @return $this
+		 */
 		public function setUserAgent($userAgent) {
 			if(!is_string($userAgent)) {
 				throw new \InvalidArgumentException('User-agent must be a string.');
@@ -207,45 +272,83 @@
 			return $this;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public function getUserAgent() {
 			return $this->userAgent;
 		}
 		
+		/**
+		 * @param $debug
+		 *
+		 * @return $this
+		 */
 		public function setDebug($debug) {
 			$this->debug = $debug;
 			return $this;
 		}
 		
+		/**
+		 * @return bool
+		 */
 		public function getDebug() {
 			return $this->debug;
 		}
 		
+		/**
+		 * @param $debugFile
+		 *
+		 * @return $this
+		 */
 		public function setDebugFile($debugFile) {
 			$this->debugFile = $debugFile;
 			return $this;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public function getDebugFile() {
 			return $this->debugFile;
 		}
 		
+		/**
+		 * @param $tempFolderPath
+		 *
+		 * @return $this
+		 */
 		public function setTempFolderPath($tempFolderPath) {
 			$this->tempFolderPath = $tempFolderPath;
 			return $this;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public function getTempFolderPath() {
 			return $this->tempFolderPath;
 		}
 		
+		/**
+		 * @param $timeout
+		 *
+		 * @return void
+		 */
 		public function setTimeout($timeout) {
 			$this->timeout = $timeout;
 		}
 		
+		/**
+		 * @return int
+		 */
 		public function getTimeout() {
 			return $this->timeout;
 		}
 		
+		/**
+		 * @return Configuration
+		 */
 		public static function getDefaultConfiguration() {
 			if(self::$defaultConfiguration === NULL) {
 				self::$defaultConfiguration = new Configuration();
@@ -258,6 +361,9 @@
 			self::$defaultConfiguration = $config;
 		}
 		
+		/**
+		 * @return string
+		 */
 		public static function toDebugReport() {
 			$report = 'PHP SDK (MailchimpMarketing) Debug Report:' . PHP_EOL;
 			$report .= '    OS: ' . php_uname() . PHP_EOL;
@@ -269,6 +375,11 @@
 			return $report;
 		}
 		
+		/**
+		 * @param $apiKeyIdentifier
+		 *
+		 * @return null|mixed|string
+		 */
 		public function getApiKeyWithPrefix($apiKeyIdentifier) {
 			$prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
 			$apiKey = $this->getApiKey($apiKeyIdentifier);
