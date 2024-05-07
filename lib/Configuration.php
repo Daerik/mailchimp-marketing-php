@@ -126,7 +126,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setConfig($config = array()) {
+		public function setConfig($config = array()): static {
 			$apiKey      = isset($config['apiKey']) ? $config['apiKey'] : '';
 			$accessToken = isset($config['accessToken']) ? $config['accessToken'] : '';
 			$server      = isset($config['server']) ? $config['server'] : 'invalid-server';
@@ -156,7 +156,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setApiKey($apiKeyIdentifier, $key) {
+		public function setApiKey($apiKeyIdentifier, $key): static {
 			$this->apiKeys[$apiKeyIdentifier] = $key;
 			return $this;
 		}
@@ -166,7 +166,7 @@
 		 *
 		 * @return null|mixed
 		 */
-		public function getApiKey($apiKeyIdentifier) {
+		public function getApiKey($apiKeyIdentifier): mixed {
 			return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : NULL;
 		}
 		
@@ -176,7 +176,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setApiKeyPrefix($apiKeyIdentifier, $prefix) {
+		public function setApiKeyPrefix($apiKeyIdentifier, $prefix): static {
 			$this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
 			return $this;
 		}
@@ -186,7 +186,7 @@
 		 *
 		 * @return null|mixed
 		 */
-		public function getApiKeyPrefix($apiKeyIdentifier) {
+		public function getApiKeyPrefix($apiKeyIdentifier): mixed {
 			return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : NULL;
 		}
 		
@@ -195,7 +195,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setAccessToken($accessToken) {
+		public function setAccessToken($accessToken): static {
 			$this->accessToken = $accessToken;
 			return $this;
 		}
@@ -203,7 +203,7 @@
 		/**
 		 * @return string
 		 */
-		public function getAccessToken() {
+		public function getAccessToken(): string {
 			return $this->accessToken;
 		}
 		
@@ -212,7 +212,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setUsername($username) {
+		public function setUsername($username): static {
 			$this->username = $username;
 			return $this;
 		}
@@ -220,7 +220,7 @@
 		/**
 		 * @return string
 		 */
-		public function getUsername() {
+		public function getUsername(): string {
 			return $this->username;
 		}
 		
@@ -229,7 +229,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setPassword($password) {
+		public function setPassword($password): static {
 			$this->password = $password;
 			return $this;
 		}
@@ -237,7 +237,7 @@
 		/**
 		 * @return string
 		 */
-		public function getPassword() {
+		public function getPassword(): string {
 			return $this->password;
 		}
 		
@@ -246,7 +246,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setHost($host) {
+		public function setHost($host): static {
 			$this->host = $host;
 			return $this;
 		}
@@ -254,7 +254,7 @@
 		/**
 		 * @return string
 		 */
-		public function getHost() {
+		public function getHost(): string {
 			return $this->host;
 		}
 		
@@ -263,7 +263,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setUserAgent($userAgent) {
+		public function setUserAgent($userAgent): static {
 			if(!is_string($userAgent)) {
 				throw new \InvalidArgumentException('User-agent must be a string.');
 			}
@@ -275,7 +275,7 @@
 		/**
 		 * @return string
 		 */
-		public function getUserAgent() {
+		public function getUserAgent(): string {
 			return $this->userAgent;
 		}
 		
@@ -284,7 +284,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setDebug($debug) {
+		public function setDebug($debug): static {
 			$this->debug = $debug;
 			return $this;
 		}
@@ -292,7 +292,7 @@
 		/**
 		 * @return bool
 		 */
-		public function getDebug() {
+		public function getDebug(): bool {
 			return $this->debug;
 		}
 		
@@ -301,7 +301,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setDebugFile($debugFile) {
+		public function setDebugFile($debugFile): static {
 			$this->debugFile = $debugFile;
 			return $this;
 		}
@@ -309,7 +309,7 @@
 		/**
 		 * @return string
 		 */
-		public function getDebugFile() {
+		public function getDebugFile(): string {
 			return $this->debugFile;
 		}
 		
@@ -318,7 +318,7 @@
 		 *
 		 * @return $this
 		 */
-		public function setTempFolderPath($tempFolderPath) {
+		public function setTempFolderPath($tempFolderPath): static {
 			$this->tempFolderPath = $tempFolderPath;
 			return $this;
 		}
@@ -326,7 +326,7 @@
 		/**
 		 * @return string
 		 */
-		public function getTempFolderPath() {
+		public function getTempFolderPath(): string {
 			return $this->tempFolderPath;
 		}
 		
@@ -335,21 +335,21 @@
 		 *
 		 * @return void
 		 */
-		public function setTimeout($timeout) {
+		public function setTimeout($timeout): void {
 			$this->timeout = $timeout;
 		}
 		
 		/**
 		 * @return int
 		 */
-		public function getTimeout() {
+		public function getTimeout(): int {
 			return $this->timeout;
 		}
 		
 		/**
 		 * @return Configuration
 		 */
-		public static function getDefaultConfiguration() {
+		public static function getDefaultConfiguration(): Configuration {
 			if(self::$defaultConfiguration === NULL) {
 				self::$defaultConfiguration = new Configuration();
 			}
@@ -357,14 +357,14 @@
 			return self::$defaultConfiguration;
 		}
 		
-		public static function setDefaultConfiguration(Configuration $config) {
+		public static function setDefaultConfiguration(Configuration $config): void {
 			self::$defaultConfiguration = $config;
 		}
 		
 		/**
 		 * @return string
 		 */
-		public static function toDebugReport() {
+		public static function toDebugReport(): string {
 			$report = 'PHP SDK (MailchimpMarketing) Debug Report:' . PHP_EOL;
 			$report .= '    OS: ' . php_uname() . PHP_EOL;
 			$report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
@@ -380,7 +380,7 @@
 		 *
 		 * @return null|mixed|string
 		 */
-		public function getApiKeyWithPrefix($apiKeyIdentifier) {
+		public function getApiKeyWithPrefix($apiKeyIdentifier): mixed {
 			$prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
 			$apiKey = $this->getApiKey($apiKeyIdentifier);
 			
