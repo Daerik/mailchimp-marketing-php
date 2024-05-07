@@ -127,9 +127,9 @@
 		 * @return $this
 		 */
 		public function setConfig($config = array()): static {
-			$apiKey      = isset($config['apiKey']) ? $config['apiKey'] : '';
-			$accessToken = isset($config['accessToken']) ? $config['accessToken'] : '';
-			$server      = isset($config['server']) ? $config['server'] : 'invalid-server';
+			$apiKey      = $config['apiKey'] ?? '';
+			$accessToken = $config['accessToken'] ?? '';
+			$server      = $config['server'] ?? 'invalid-server';
 			$host        = str_replace('server', $server, $this->getHost());
 			
 			// Basic Authentication
@@ -167,7 +167,7 @@
 		 * @return null|mixed
 		 */
 		public function getApiKey($apiKeyIdentifier): mixed {
-			return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : NULL;
+			return $this->apiKeys[$apiKeyIdentifier] ?? NULL;
 		}
 		
 		/**
@@ -187,7 +187,7 @@
 		 * @return null|mixed
 		 */
 		public function getApiKeyPrefix($apiKeyIdentifier): mixed {
-			return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : NULL;
+			return $this->apiKeyPrefixes[$apiKeyIdentifier] ?? NULL;
 		}
 		
 		/**
