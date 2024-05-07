@@ -358,6 +358,11 @@
 			return self::$defaultConfiguration;
 		}
 		
+		/**
+		 * @param Configuration $config
+		 *
+		 * @return void
+		 */
 		public static function setDefaultConfiguration(Configuration $config): void {
 			self::$defaultConfiguration = $config;
 		}
