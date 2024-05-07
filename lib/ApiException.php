@@ -39,7 +39,6 @@
 	 * @package  MailchimpMarketing
 	 */
 	class ApiException extends Exception {
-		
 		/**
 		 * The HTTP body of the server response either as Json or string.
 		 *
@@ -80,7 +79,7 @@
 		 *
 		 * @return string[]|null HTTP response header
 		 */
-		public function getResponseHeaders() {
+		public function getResponseHeaders(): ?array {
 			return $this->responseHeaders;
 		}
 		
@@ -89,7 +88,7 @@
 		 *
 		 * @return mixed HTTP body of the server response either as \stdClass or string
 		 */
-		public function getResponseBody() {
+		public function getResponseBody(): mixed {
 			return $this->responseBody;
 		}
 		
@@ -100,7 +99,7 @@
 		 *
 		 * @return void
 		 */
-		public function setResponseObject(mixed $obj) {
+		public function setResponseObject(mixed $obj): void {
 			$this->responseObject = $obj;
 		}
 		
@@ -109,7 +108,7 @@
 		 *
 		 * @return mixed the deserialized response object
 		 */
-		public function getResponseObject() {
+		public function getResponseObject(): mixed {
 			return $this->responseObject;
 		}
 	}
