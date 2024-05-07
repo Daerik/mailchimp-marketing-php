@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "php": ">=7.2",
+        "php": ">=8.3",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
@@ -35,6 +35,8 @@
         }
     },
     "autoload-dev": {
-        "psr-4": { "MailchimpMarketing\\" : "test/" }
+        "psr-4": {
+	        "MailchimpMarketing\\" : "test/"
+        }
     }
 }
