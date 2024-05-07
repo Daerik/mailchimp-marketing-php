@@ -28,8 +28,6 @@
 	
 	namespace MailchimpMarketing;
 	
-	use \Exception;
-	
 	/**
 	 * ApiException Class Doc Comment
 	 *
